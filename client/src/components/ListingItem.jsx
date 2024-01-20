@@ -3,19 +3,10 @@ import React, { useEffect, useState } from 'react';
 export default function ListingItem({ course }) {
   const [imageUrl, setImageUrl] = useState('');
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/photos')
-      .then(response => response.json())
-      .then(data => {
-        const imageUrl = data.url;
-        setImageUrl(imageUrl);
-      });
-  }, []);
-
   return (
     <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
       <img
-        src={imageUrl || 'https://example.com/default-image.jpg'}
+        src={course.image || 'https://via.placeholder.com/600x400'}
         alt="course image"
         className="h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300"
       />
