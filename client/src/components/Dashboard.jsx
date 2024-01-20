@@ -11,11 +11,20 @@ const fetchEnrolledCourses = () => {
   // Simulating fetching enrolled courses from an API
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve([
+      const allCourses = [
         { id: 1, name: 'Course 1', instructor: 'John Doe', thumbnail: generateRandomImage(), dueDate: '2022-12-31', progress: 50 },
         { id: 2, name: 'Course 2', instructor: 'Jane Smith', thumbnail: generateRandomImage(), dueDate: '2022-12-30', progress: 25 },
+        { id: 3, name: 'Course 3', instructor: 'Bob Johnson', thumbnail: generateRandomImage(), dueDate: '2022-12-29', progress: 75 },
+        { id: 4, name: 'Course 4', instructor: 'Alice Brown', thumbnail: generateRandomImage(), dueDate: '2022-12-28', progress: 40 },
+        { id: 5, name: 'Course 5', instructor: 'Charlie White', thumbnail: generateRandomImage(), dueDate: '2022-12-27', progress: 60 },
         // Add more enrolled courses
-      ]);
+      ];
+
+      // Generate a random number of courses to display (between 1 and allCourses.length)
+      const numberOfCoursesToShow = Math.floor(Math.random() * allCourses.length) + 1;
+      const randomCourses = allCourses.slice(0, numberOfCoursesToShow);
+
+      resolve(randomCourses);
     }, 1000);
   });
 };
@@ -27,7 +36,7 @@ const Dashboard = () => {
     const fetchCourses = async () => {
       try {
         const courses = await fetchEnrolledCourses();
-        setEnrolledCourses(courses.slice(0, 7)); // Display no more than 7 enrolled courses
+        setEnrolledCourses(courses);
       } catch (error) {
         console.error('Error fetching enrolled courses:', error);
       }
