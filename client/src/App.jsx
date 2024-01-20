@@ -1,16 +1,25 @@
-import { useState } from 'react'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import CourseListing from './components/CourseListing';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-          <h1>hello world</h1>
-      </div>
-    </>
-  )
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/course-listing" element={<CourseListing />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
-export default App
+const Home = () => (
+  <div>
+    <h2>Welcome to the Home Page</h2>
+  </div>
+);
