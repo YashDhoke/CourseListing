@@ -15,7 +15,7 @@ export default function CourseListing() {
         if (cache[page]) {
           setCourses((prevCourses) => [...prevCourses, ...cache[page]]);
         } else {
-          const response = await fetch(`https://hub.dummyapis.com/products?noofRecords=10&idStarts=1001&currency=usd`);
+          const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`);
           if (response.ok === false) {
             setError("Failed to fetch courses");
             return;
