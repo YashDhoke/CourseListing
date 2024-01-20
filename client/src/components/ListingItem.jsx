@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function ListingItem({ course }) {
-  const [imageUrl, setImageUrl] = useState('');
+  const uniqueImageSource = course.image || `https://source.unsplash.com/400x600/?study,learning&id=${course.id}`;
 
   return (
     <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
       <img
-        src={course.image || 'https://via.placeholder.com/600x400'}
+        src={uniqueImageSource} 
         alt="course image"
         className="h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300"
       />
