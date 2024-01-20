@@ -1,5 +1,11 @@
+// pages/CourseListing.js
 import React, { useState, useEffect } from 'react';
 import ListingItem from '../components/ListingItem';
+
+const generateRandomName = () => {
+  const names = ['John Doe', 'Jane Smith', 'Bob Johnson', 'Alice Brown', 'Charlie White'];
+  return names[Math.floor(Math.random() * names.length)];
+};
 
 export default function CourseListing() {
   const [courses, setCourses] = useState([]);
@@ -21,8 +27,12 @@ export default function CourseListing() {
             return;
           }
           const data = await response.json();
-          setCache((prevCache) => ({ ...prevCache, [page]: data }));
-          setCourses((prevCourses) => [...prevCourses, ...data]);
+          const coursesWithInstructor = data.map((course) => ({
+            ...course,
+            instructor: generateRandomName(), // Generate a random instructor name
+          }));
+          setCache((prevCache) => ({ ...prevCache, [page]: coursesWithInstructor }));
+          setCourses((prevCourses) => [...prevCourses, ...coursesWithInstructor]);
         }
         setLoading(false);
         setError(null);
