@@ -1,5 +1,6 @@
 // components/ListingItem.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ListingItem({ course }) {
   const generateRandomImage = () => {
@@ -28,6 +29,11 @@ export default function ListingItem({ course }) {
             Instructor: {course.instructor}
           </p>
         )}
+        <Link to={`/details/${course.id}`}>
+          <button className="bg-gray-800 text-white py-2 px-4 mt-2 rounded-lg hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );
