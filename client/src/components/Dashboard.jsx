@@ -84,7 +84,7 @@ const Dashboard = () => {
                     <div>
                       <p className="font-bold text-green-500">Course Completed!</p>
                       <Link to="/" className="text-blue-500 mt-2 block">
-                        Explore More Courses
+                        View More
                       </Link>
                     </div>
                   ) : (
@@ -92,7 +92,7 @@ const Dashboard = () => {
                       <Link to={`/details/${course.id}`} className="text-blue-500 block">
                         View Details
                       </Link>
-                      <button onClick={() => handleMarkCompleted(course.id)} className="bg-blue-500 text-white px-4 py-2 mt-2">
+                      <button onClick={() => handleMarkCompleted(course.id)} className="bg-blue-500 text-white px-3 py-1 mt-2">
                         Mark as Completed
                       </button>
                     </div>
@@ -103,6 +103,11 @@ const Dashboard = () => {
           ))}
         </div>
       )}
+
+      {/* Button to Explore More Courses */}
+      <Link to="/" className="bg-blue-500 text-white flex justify-center mt-10 max-w-sm mx-auto p-4 rounded-md">
+        Explore more courses
+      </Link>
     </div>
   );
 };
