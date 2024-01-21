@@ -66,7 +66,7 @@ const Dashboard = () => {
           {enrolledCourses.map((course) => (
             <div key={course.id} className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg">
               {/* Use onClick to handle Mark as Completed button */}
-              <div onClick={() => handleMarkCompleted(course.id)}>
+              <div>
                 <img
                   src={course.thumbnail}
                   alt={`Thumbnail for ${course.name}`}
@@ -80,17 +80,17 @@ const Dashboard = () => {
                     <progress className="w-full" value={course.progress} max="100" />
                     <p className="text-sm text-gray-600 mt-1">{course.progress}% Complete</p>
                   </div>
-                  {course.completed ? (
-                    <div>
-                      <p>Congratulations! You have completed this course.</p>
-                      <Link to="/" className="text-blue-500 mt-2 block">
-                        Explore More Courses
-                      </Link>
+                  <div className="mt-2">
+                    <Link to={`/details/${course.id}`} className="text-blue-500 block">
+                      View Details
+                    </Link>
+                  </div>
+                  {!course.completed && (
+                    <div className="mt-2">
+                      <button onClick={() => handleMarkCompleted(course.id)} className="bg-blue-500 text-white px-4 py-2">
+                        Mark as Completed
+                      </button>
                     </div>
-                  ) : (
-                    <button className="bg-blue-500 text-white px-4 py-2 mt-2">
-                      Mark as Completed
-                    </button>
                   )}
                 </div>
               </div>
