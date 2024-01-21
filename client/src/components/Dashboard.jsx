@@ -12,11 +12,11 @@ const fetchEnrolledCourses = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const allCourses = [
-        { id: 1, name: 'Course 1', instructor: 'John Doe', thumbnail: generateRandomImage(), dueDate: '2022-12-31', progress: 50 },
-        { id: 2, name: 'Course 2', instructor: 'Jane Smith', thumbnail: generateRandomImage(), dueDate: '2022-12-30', progress: 25 },
-        { id: 3, name: 'Course 3', instructor: 'Bob Johnson', thumbnail: generateRandomImage(), dueDate: '2022-12-29', progress: 75 },
-        { id: 4, name: 'Course 4', instructor: 'Alice Brown', thumbnail: generateRandomImage(), dueDate: '2022-12-28', progress: 40 },
-        { id: 5, name: 'Course 5', instructor: 'Charlie White', thumbnail: generateRandomImage(), dueDate: '2022-12-27', progress: 60 },
+        { id: 1, name: 'Course 1', instructor: 'John Doe', thumbnail: generateRandomImage(), dueDate: '2022-12-31', progress: 50, completed: false },
+        { id: 2, name: 'Course 2', instructor: 'Jane Smith', thumbnail: generateRandomImage(), dueDate: '2022-12-30', progress: 25, completed: false },
+        { id: 3, name: 'Course 3', instructor: 'Bob Johnson', thumbnail: generateRandomImage(), dueDate: '2022-12-29', progress: 75, completed: false },
+        { id: 4, name: 'Course 4', instructor: 'Alice Brown', thumbnail: generateRandomImage(), dueDate: '2022-12-28', progress: 40, completed: false },
+        { id: 5, name: 'Course 5', instructor: 'Charlie White', thumbnail: generateRandomImage(), dueDate: '2022-12-27', progress: 60, completed: false },
         // Add more enrolled courses
       ];
 
@@ -45,6 +45,13 @@ const Dashboard = () => {
     fetchCourses();
   }, []);
 
+  const handleMarkCompleted = (courseId) => {
+    // Simulate marking the course as completed
+    setEnrolledCourses((prevCourses) =>
+      prevCourses.map((course) => (course.id === courseId ? { ...course, completed: true } : course))
+    );
+  };
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Enrolled Courses</h2>
@@ -68,6 +75,14 @@ const Dashboard = () => {
                     <progress className="w-full" value={course.progress} max="100" />
                     <p className="text-sm text-gray-600 mt-1">{course.progress}% Complete</p>
                   </div>
+                  {!course.completed && (
+                    <button
+                      onClick={() => handleMarkCompleted(course.id)}
+                      className="bg-blue-500 text-white px-4 py-2 mt-2"
+                    >
+                      Mark as Completed
+                    </button>
+                  )}
                 </div>
               </Link>
             </div>
