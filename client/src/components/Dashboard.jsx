@@ -12,11 +12,11 @@ const fetchEnrolledCourses = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const allCourses = [
-        { id: 1, name: 'Course 1', instructor: 'John Doe', thumbnail: generateRandomImage(), dueDate: '2022-12-31', progress: 50, completed: false },
-        { id: 2, name: 'Course 2', instructor: 'Jane Smith', thumbnail: generateRandomImage(), dueDate: '2022-12-30', progress: 25, completed: false },
-        { id: 3, name: 'Course 3', instructor: 'Bob Johnson', thumbnail: generateRandomImage(), dueDate: '2022-12-29', progress: 75, completed: false },
-        { id: 4, name: 'Course 4', instructor: 'Alice Brown', thumbnail: generateRandomImage(), dueDate: '2022-12-28', progress: 40, completed: false },
-        { id: 5, name: 'Course 5', instructor: 'Charlie White', thumbnail: generateRandomImage(), dueDate: '2022-12-27', progress: 60, completed: false },
+        { id: 1, name: 'C++', instructor: 'John Doe', thumbnail: generateRandomImage(), dueDate: '2022-12-31', progress: 50, completed: false },
+        { id: 2, name: 'React', instructor: 'Jane Smith', thumbnail: generateRandomImage(), dueDate: '2022-12-30', progress: 25, completed: false },
+        { id: 3, name: 'MERN Stack', instructor: 'Bob Johnson', thumbnail: generateRandomImage(), dueDate: '2022-12-29', progress: 75, completed: false },
+        { id: 4, name: 'Ruby on Rails', instructor: 'Alice Brown', thumbnail: generateRandomImage(), dueDate: '2022-12-28', progress: 40, completed: false },
+        { id: 5, name: 'Blockchain', instructor: 'Charlie White', thumbnail: generateRandomImage(), dueDate: '2022-12-27', progress: 60, completed: false },
         // Add more enrolled courses
       ];
 
