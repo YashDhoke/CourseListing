@@ -48,7 +48,11 @@ const Dashboard = () => {
   const handleMarkCompleted = (courseId) => {
     // Simulate marking the course as completed
     setEnrolledCourses((prevCourses) =>
-      prevCourses.map((course) => (course.id === courseId ? { ...course, completed: true } : course))
+      prevCourses.map((course) =>
+        course.id === courseId
+          ? { ...course, completed: true, progress: 100 } // Set progress to 100 when completed
+          : course
+      )
     );
   };
 
@@ -61,7 +65,8 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {enrolledCourses.map((course) => (
             <div key={course.id} className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg">
-              <Link to={`/details/${course.id}`}>
+              {/* Use onClick to handle Mark as Completed button */}
+              <div onClick={() => handleMarkCompleted(course.id)}>
                 <img
                   src={course.thumbnail}
                   alt={`Thumbnail for ${course.name}`}
@@ -75,16 +80,20 @@ const Dashboard = () => {
                     <progress className="w-full" value={course.progress} max="100" />
                     <p className="text-sm text-gray-600 mt-1">{course.progress}% Complete</p>
                   </div>
-                  {!course.completed && (
-                    <button
-                      onClick={() => handleMarkCompleted(course.id)}
-                      className="bg-blue-500 text-white px-4 py-2 mt-2"
-                    >
+                  {course.completed ? (
+                    <div>
+                      <p>Congratulations! You have completed this course.</p>
+                      <Link to="/courses" className="text-blue-500 mt-2 block">
+                        Explore More Courses
+                      </Link>
+                    </div>
+                  ) : (
+                    <button className="bg-blue-500 text-white px-4 py-2 mt-2">
                       Mark as Completed
                     </button>
                   )}
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </div>
