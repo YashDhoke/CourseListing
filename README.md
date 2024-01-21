@@ -15,12 +15,15 @@ Tailwind CSS for styling
 Setup Instructions:
 
 
-Move to the Client Folder:
-cd client
-Install NPM dependencies:
-npm install
-Run the project:
-npm run dev
-Access the application in your browser (port may vary):
-http://localhost:5173/
+Clone the repository : https://github.com/YashDhoke/CourseListing.git
+
+
+Move to the Client Folder:  cd client
+                
+Install NPM dependencies: npm install
+
+Run the project: npm run dev
+
+Access the application in your browser (port may vary): http://localhost:5173/
+ 
 Note: Ensure you have Node.js and npm installed on your system.
