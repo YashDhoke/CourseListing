@@ -83,7 +83,7 @@ const Dashboard = () => {
                   {course.completed ? (
                     <div>
                       <p>Congratulations! You have completed this course.</p>
-                      <Link to="/courses" className="text-blue-500 mt-2 block">
+                      <Link to="/" className="text-blue-500 mt-2 block">
                         Explore More Courses
                       </Link>
                     </div>
