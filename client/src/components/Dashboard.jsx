@@ -80,14 +80,19 @@ const Dashboard = () => {
                     <progress className="w-full" value={course.progress} max="100" />
                     <p className="text-sm text-gray-600 mt-1">{course.progress}% Complete</p>
                   </div>
-                  <div className="mt-2">
-                    <Link to={`/details/${course.id}`} className="text-blue-500 block">
-                      View Details
-                    </Link>
-                  </div>
-                  {!course.completed && (
+                  {course.completed ? (
+                    <div>
+                      <p className="font-bold text-green-500">Course Completed!</p>
+                      <Link to="/" className="text-blue-500 mt-2 block">
+                        Explore More Courses
+                      </Link>
+                    </div>
+                  ) : (
                     <div className="mt-2">
-                      <button onClick={() => handleMarkCompleted(course.id)} className="bg-blue-500 text-white px-4 py-2">
+                      <Link to={`/details/${course.id}`} className="text-blue-500 block">
+                        View Details
+                      </Link>
+                      <button onClick={() => handleMarkCompleted(course.id)} className="bg-blue-500 text-white px-4 py-2 mt-2">
                         Mark as Completed
                       </button>
                     </div>
